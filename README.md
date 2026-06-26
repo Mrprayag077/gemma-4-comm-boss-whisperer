@@ -1,19 +1,19 @@
-# Corporate Translator
+# Text Fixer
 
-Turns blunt, rude, or emotional text into polished business emails — running fully locally using a quantized Gemma 4 model.
+Instantly fixes typos, spelling mistakes, grammar errors, and punctuation — running fully locally using a quantized Gemma 4 model. No cloud, no data leaves your machine.
 
 ## Screenshots
 
-![Corporate Translator UI](assets/01.png)
+![Text Fixer UI](assets/01.png)
 
-![Corporate Translator UI](assets/02.png)
+![Text Fixer UI](assets/02.png)
 
 ## How It Works
 
-1. Paste any blunt or rude text into the input box.
+1. Paste any text with typos, grammar issues, or spelling mistakes.
 2. Click **Submit**.
-3. The local Gemma 4 model rewrites it as a professional, diplomatic business email.
-4. Copy and send — no cloud, no data leaving your machine.
+3. The local Gemma 4 model corrects all mistakes while preserving your original meaning and tone.
+4. Copy and use the fixed text.
 
 ## Tech Stack
 

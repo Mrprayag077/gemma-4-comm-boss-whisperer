@@ -8,27 +8,27 @@ llm = Llama(model_path=MODEL_PATH, n_ctx=2048, verbose=False)
 print("Model loaded.")
 
 
-def corporate_translator(rude_text: str) -> str:
+def text_fixer(raw_text: str) -> str:
     prompt = (
-        "You are a corporate communications expert. Translate the following blunt, emotional, or rude text "
-        "into a professional, polite, and diplomatic business email while keeping the original intent. "
-        "Respond only with the revised professional email.\n\n"
-        f"Original Rude Text: \"{rude_text}\"\n\nProfessional Business Email:"
+        "You are a professional editor. Fix all typos, spelling mistakes, grammar errors, and punctuation issues "
+        "in the following text. Keep the original meaning and tone exactly as-is — only fix mistakes. "
+        "Respond only with the corrected text, nothing else.\n\n"
+        f"Original Text: \"{raw_text}\"\n\nCorrected Text:"
     )
-    output = llm(prompt, max_tokens=512, temperature=0.7, echo=False)
+    output = llm(prompt, max_tokens=512, temperature=0.3, echo=False)
     return output["choices"][0]["text"].strip()
 
 
 demo = gr.Interface(
-    fn=corporate_translator,
-    inputs=gr.Textbox(lines=5, placeholder="Type your blunt/rude text here...", label="Rude Input"),
-    outputs=gr.Textbox(lines=8, label="Professional Corporate Email"),
-    title="Corporate Translator",
-    description="Turns blunt or rude text into a polished business email using Gemma 4.",
+    fn=text_fixer,
+    inputs=gr.Textbox(lines=5, placeholder="Paste your text here — typos, grammar mistakes, anything...", label="Your Text"),
+    outputs=gr.Textbox(lines=8, label="Fixed Text"),
+    title="Text Fixer",
+    description="Instantly fixes typos, spelling, grammar, and punctuation — running fully local using Gemma 4.",
     examples=[
-        ["This deadline is stupid and I'm not going to meet it."],
-        ["Your code is terrible and broke everything."],
-        ["I told you this wouldn't work. Why didn't you listen?"],
+        ["i dont knw waht im doign with this proyect its a complet mess"],
+        ["Their going to the store tommorow to bye some grocerys"],
+        ["the meeting was schedueld for thurdsay but nobdy showed up"],
     ],
 )
 demo.launch()
