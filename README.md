@@ -2,9 +2,11 @@
 
 Turns blunt, rude, or emotional text into polished business emails — running fully locally using a quantized Gemma 4 model.
 
-## Screenshot
+## Screenshots
 
-![Corporate Translator UI](assets/image.png)
+![Corporate Translator UI](assets/01.png)
+
+![Corporate Translator UI](assets/02.png)
 
 ## How It Works
 
