@@ -60,18 +60,24 @@ def corporate_translator(rude_text: str) -> str:
 
 # --- STEP 3: Run the Application ---
 if __name__ == "__main__":
-    print("--- Corporate Translator Initialized ---")
-    
-    # Example Input from the user (the rude version)
-    rude_input = input("Enter the blunt/rude text you want to translate: \n> ")
+    import gradio as gr
 
-    if rude_input.strip():
-        print("\nProcessing...")
-        professional_output = corporate_translator(rude_input)
+    def translate(rude_text):
+        if not rude_text.strip():
+            return "Please enter some text."
+        return corporate_translator(rude_text)
 
-        print("\n=============================================")
-        print("✅ PROFESSIONAL CORPORATE TRANSLATION:")
-        print(professional_output)
-        print("=============================================")
-
+    demo = gr.Interface(
+        fn=translate,
+        inputs=gr.Textbox(lines=5, placeholder="Type your blunt/rude text here...", label="Rude Input"),
+        outputs=gr.Textbox(lines=8, label="Professional Corporate Email"),
+        title="Corporate Translator",
+        description="Turns blunt or rude text into a polished business email using Gemma.",
+        examples=[
+            ["This deadline is stupid and I'm not going to meet it."],
+            ["Your code is terrible and broke everything."],
+            ["I told you this wouldn't work. Why didn't you listen?"],
+        ],
+    )
+    demo.launch()
 
